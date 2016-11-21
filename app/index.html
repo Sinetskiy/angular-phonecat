@@ -14,14 +14,14 @@
     <h1>{{title}}</h1>
     <input type="text" ng-model="query">
     <ul>
-        <li ng-repeat="phone in filterFun = (phones | filter:doneAndFilter) ">
+        <li ng-repeat="phone in phones ">
             <span>{{phone.name}}</span>
             <p>
                 {{phone.snippet}}
             </p>
         </li>
     </ul>
-    <p>Фильтрованное кол-во телефонов: {{filterFun.length}}</p>
+    <p>Фильтрованное кол-во телефонов: {{phones.length}}</p>
     <!--table>
         <tr ng-repeat="i in [0,1,2,3,4,5,6,7]">
             <td>{{i+1}}</td>
