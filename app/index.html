@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Google Phone Gallery</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+
+<body ng-controller="PhoneListCtrl">
+    <h1>{{title}}</h1>
+    <input type="text" ng-model="query">
+    <ul>
+        <li ng-repeat="phone in filterFun = (phones | filter:doneAndFilter) ">
+            <span>{{phone.name}}</span>
+            <p>
+                {{phone.snippet}}
+            </p>
+        </li>
+    </ul>
+    <p>Фильтрованное кол-во телефонов: {{filterFun.length}}</p>
+    <!--table>
+        <tr ng-repeat="i in [0,1,2,3,4,5,6,7]">
+            <td>{{i+1}}</td>
+        </tr>
+    </table//-->
+    {{today | date:'dd/MM/yyyy'}}
+    <br> {{'My very long string' | limitTo: 10 | lowercase}}
+
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th><a href="" ng-click="sort('name')">Name
+                        <i class="glyphicon" 
+                        ng-class="{'glyphicon-chevron-up' : isSortUp('name'),'glyphicon-chevron-down' : isSortDown('name')}" ></i> 
+                    </a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="phone in phones | orderBy:!sortField:reverse">
+                <td>{{phone.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <ul>
+        <li>1. Currency: {{234 | currency}}</li>
+        <li>2. Date {{21212121323 | date:'dd.MM.yyyy'}}</li>
+        <li>3. Number {{12312312.222 | number:3}}</li>
+        <li>4. Lowercase: {{'My very long string' | lowercase}}</li>
+        <li>5. Uppercase: {{'My very long string' | uppercase}}</li>
+        <li>6. Json: <pre>{{{ name: 'test',snippet: 'test test test test'} | json}}</pre></li>
+    </ul>
+
+</body>
+
+</html>
